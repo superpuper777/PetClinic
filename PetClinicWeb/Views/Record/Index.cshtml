@@ -1,0 +1,115 @@
+﻿@using PetClinicWeb.System.Extensions
+
+@model PetClinicWeb.Models.Record.RecordViewModel
+
+@{
+    ViewBag.Title = this.LocalResources("Title");
+}
+
+<h2>@this.LocalResources("Title")</h2>
+
+@using (Html.BeginForm("Submit", "Record", FormMethod.Post))
+{
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new {@class = "text-danger"})
+        <div class="form-group">
+            @Html.LabelFor(model => model.ServiceId, new {@class = "control-label col-md-2"})
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.ServiceId, Model.ServicesList, new {@class = "form-control"})
+                @Html.ValidationMessageFor(model => model.ServiceId, "", new {@class = "text-danger"})
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.DoctorId, new {@class = "control-label col-md-2"})
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.DoctorId, Model.DoctorsList, new {@class = "form-control", @id = "record-selected-doctor-id"})
+                @Html.ValidationMessageFor(model => model.DoctorId, "", new {@class = "text-danger"})
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Date, new {@class = "control-label col-md-2"})
+            <div class="col-md-10">
+                <div id="record-datepicker"></div>
+                @Html.HiddenFor(model => model.Date, new { @id = "record-date-field" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Time, new {@class = "control-label col-md-2"})
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Time, new {@id = "record-timepicker", @class = "form-control"})
+                @Html.ValidationMessageFor(model => model.Time, "", new {@class = "text-danger"})
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="@this.LocalResources("BtnRegister")" class="btn btn-success"/>
+            </div>
+        </div>
+    </div>
+
+}
+
+<script>
+
+    $(function() {
+
+        var dateNow = new Date();
+        $("#record-datepicker").datepicker({
+            defaultDate: dateNow,
+            onSelect: function (date) {
+                var selectedDoctorId = $('#record-selected-doctor-id').val();
+                var dateval = moment(date, 'DD.MM.YYYY').format();
+                $('#record-date-field').val(dateval);
+                updateBusyTimeList(dateval, selectedDoctorId);
+            }
+        });
+
+        $('#record-selected-doctor-id').on('change', function () {
+            var selectedDate = $("#record-datepicker").datepicker("getDate");
+            var dateval = moment(selectedDate, 'DD.MM.YYYY').format();
+            updateBusyTimeList(dateval, $(this).val());
+        });
+
+        $("#record-timepicker").val('');
+        $("#record-timepicker").attr('disabled', true);
+    });
+
+    function updateBusyTimeList(selectedDate, doctorId) {
+
+        if (!moment(selectedDate).isValid() || doctorId <= 0)
+            return;
+
+        var xhr$ = $.ajax({
+            type: "POST",
+            url: "/Record/BusyTimeList",
+            data: { Date: selectedDate, DoctorId: doctorId }
+        });
+        xhr$.success(function (response) {
+            if (response.success) {
+                $("#record-timepicker").removeAttr('disabled');
+                $("#record-timepicker").on('keydown',
+                    function(e) {
+                        e.preventDefault();
+                    });
+                $("#record-timepicker").datetimepicker({
+                    format: 'H:i',
+                    lang: 'ru',
+                    allowTimes: _.difference(window.GlobalAllowTimes, response.data),
+                    datepicker: false
+                });
+            } else {
+                $("#record-timepicker").val('');
+                $("#record-timepicker").attr('disabled', true);
+                $.toaster({ priority: 'danger', title: '@this.LocalResources("Error")', message: response.message, timeout: 4000 });
+            }
+        });
+        xhr$.fail(function (error) {
+            $("#record-timepicker").val('');
+            $("#record-timepicker").attr('disabled', true);
+            $.toaster({ priority: 'danger', title: '@this.LocalResources("Error")', message: error.statusText, timeout: 4000 });
+        });
+    }
+
+</script>
+

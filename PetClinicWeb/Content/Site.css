@@ -1,0 +1,98 @@
+﻿html {
+    height: 100%;
+}
+
+body {
+    background: url('images/bg.jpg') 50% 30% repeat #fff;
+    height: 100%;
+}
+
+    body > .container {
+        background-color: #fff;
+        border-left: 2px solid grey;
+        /*background-image: url('images/img1.jpg');
+        width: 100%;
+        height: auto;*/
+        border-right: 2px solid grey;
+        min-height: 100%;
+    }
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.ui-datepicker {
+    z-index: 9999 !important;
+}
+
+.top_nav_right {
+    float: right;
+    width: 21%;
+}
+.ban-top {
+    background:rgba(197, 197, 197, 0.51);
+}
+.top_nav_right ul {
+    margin-top: 11px;
+}
+.top_nav_right ul li{
+	list-style-type:none;
+	display:inline-block;
+	margin:0 2px;
+	overflow:hidden;
+	height:32px;
+}
+.top_nav_right ul li a{	
+    width: 32px;
+    height: 32px;
+    display: inline-block;
+    border: 1px solid #fff;
+}
+
+.top_nav_right ul li a.fb {
+    background-image: url('images/social2.png');
+    background-repeat: no-repeat;
+    background-position: -48px -7px;
+}
+.top_nav_right ul li a.twit {
+    background-image: url('images/social2.png');
+    background-repeat: no-repeat;
+    background-position: -7px -7px;
+}
+ /*-- agileits --*/
+.top_nav_right ul li a.goog {
+    background-image: url('images/social2.png');
+    background-repeat: no-repeat;
+    background-position: -88px -7px;
+}
+a.button7 {
+  font-weight: 700;
+  color: white;
+  text-decoration: none;
+  padding: .8em 1em calc(.8em + 3px);
+ 
+  background: rgb(64,199,129);
+
+} 
+a.button7:hover { background: rgb(53, 167, 110); }
+a.button7:active {
+  background: rgb(33,147,90);
+  
+}
+

@@ -1,0 +1,44 @@
+﻿@using PetClinicWeb.System.Extensions
+@model PetClinicFacade.Models.DiagramModel
+
+@{
+    ViewBag.Title = this.LocalResources("Title");
+}
+
+<h2>@this.LocalResources("Title")</h2>
+
+<canvas id="pet-clinic-diagram" width="800" height="500"></canvas>
+
+<script>
+    var ctx = document.getElementById("pet-clinic-diagram").getContext('2d');
+
+    var data = {
+        datasets: [{
+            label: '@this.LocalResources("DiagramLabel")',
+            data: @Html.Raw(Json.Encode(Model.Counts)),
+            borderColor: ['red']
+        }],
+        labels: @Html.Raw(Json.Encode(Model.Dates))
+    };
+
+    var options = {
+        responsive: false,
+        scales: {
+            yAxes: [{
+                ticks: {
+                    stepSize: 1,
+                    beginAtZero: true
+                }
+            }]
+        }
+    };
+
+    var petClinicChart = new Chart(ctx, {
+        type: 'line',
+        data: data,
+        options: options
+    });
+</script>
+
+
+

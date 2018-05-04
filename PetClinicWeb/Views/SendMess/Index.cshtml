@@ -1,0 +1,39 @@
+﻿@using PetClinicWeb.System.Extensions
+@model PetClinicFacade.Models.EmailModel
+@{
+    ViewBag.Title = this.LocalResources("Title");
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("Index", "SendMess", FormMethod.Post, new {@class = "well"}))
+{
+    <div class="form-horizontal">
+        @Html.ValidationSummary()
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Subject, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Subject, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Subject, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Body, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Body, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Body, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="@this.LocalResources("BtnSend")" class="btn btn-success" />
+            </div>
+        </div>
+
+    </div>
+}
+
+

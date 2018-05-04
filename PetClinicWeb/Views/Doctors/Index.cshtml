@@ -1,0 +1,120 @@
+﻿@using PetClinicWeb.System.Extensions
+
+
+@{
+    ViewBag.Title = this.LocalResources("Title");
+}
+
+<h1>@ViewBag.Title</h1>
+
+<div id="doctors-grid"></div>
+
+<script>
+
+    $(function () {
+
+        jsGrid.locale("ru");
+
+        $("#doctors-grid").jsGrid({
+            width: "100%",
+            pageSize: 15,
+            filtering: true,
+            selecting: true,
+            editing: true,
+            inserting: true,
+            sorting: true,
+            paging: true,
+            autoload: true,
+            deleteConfirm: function(item) {
+                return "@this.LocalResources("DialogDeleteConfirm") \"" + item.Name + "\"?";
+            },
+            controller: {
+                loadData: function (filter) {
+                    var d = $.Deferred();
+                    $.post("/Doctors/List", filter).done(function (response) {
+                        d.resolve(response);
+                    });
+
+                    return d.promise();
+                },
+                insertItem: function(item) {
+                    var d = $.Deferred();
+                    var xhr$ = $.ajax({
+                        type: "POST",
+                        url: "/Doctors/Save",
+                        data: item
+                    });
+                    xhr$.success(function (response) {
+                        if (response.success) {
+                            d.resolve(item);
+                        } else {
+                            $.toaster({ priority: 'danger', title: '@this.LocalResources("Error")', message: response.message, timeout: 4000 });
+                            d.reject();
+                        }
+                    });
+                    xhr$.fail(function (error) {
+                        $.toaster({ priority: 'danger', title: '@this.LocalResources("Error")', message: error.statusText, timeout: 4000 });
+                        d.reject();
+                    });
+                    return d;
+                },
+                updateItem: function (item) {
+                    var d = $.Deferred();
+                    var xhr$ = $.ajax({
+                        type: "POST",
+                        url: "/Doctors/Edit",
+                        data: item
+                    });
+                    xhr$.success(function (response) {
+                        if (response.success) {
+                            d.resolve(item);
+                        } else {
+                            $.toaster({ priority: 'danger', title: '@this.LocalResources("Error")', message: response.message, timeout: 4000 });
+                            d.reject();
+                        }
+                    });
+                    xhr$.fail(function (error) {
+                        $.toaster({ priority: 'danger', title: '@this.LocalResources("Error")', message: error.statusText, timeout: 4000 });
+                        d.reject();
+                    });
+                    return d;
+                },
+                deleteItem: function (item) {
+                    var d = $.Deferred();
+                    var xhr$ = $.ajax({
+                        type: "POST",
+                        url: "/Doctors/Delete",
+                        data: item
+                    });
+                    xhr$.success(function () {
+                        d.resolve(item);
+                    });
+                    xhr$.fail(function (error) {
+                        $.toaster({ priority: 'danger', title: '@this.LocalResources("Error")', message: error.statusText, timeout: 4000 });
+                        d.reject();
+                    });
+                    return d;
+                }
+            },
+            fields: [
+                {
+                    align: "left",
+                    name: "Name",
+                    title: "@this.LocalResources("ColumnName")",
+                    type: "text",
+                    validate: "required"
+                },
+                {
+                    align: "left",
+                    name: "Specialisation",
+                    title: "@this.LocalResources("ColumnSpecialisation")",
+                    type: "text",
+                    validate: "required"
+                },
+                { type: "control" }
+            ]
+        });
+    })
+
+</script>
+

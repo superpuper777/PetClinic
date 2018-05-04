@@ -1,0 +1,162 @@
+﻿@using PetClinicWeb.System.Extensions
+@model PetClinicWeb.Models.Receptions.ReceptionFilterViewModel
+
+@{
+    ViewBag.Title = this.LocalResources("Title");
+}
+
+<h1>@ViewBag.Title</h1>
+
+<div id="receptions-grid"></div>
+
+<script>
+
+    $(function () {
+
+        jsGrid.locale("ru");
+
+        $("#receptions-grid").jsGrid({
+            width: "100%",
+            pageSize: 15,
+            filtering: true,
+            selecting: true,
+            editing: true,
+            inserting: true,
+            sorting: true,
+            paging: true,
+            autoload: true,
+            deleteConfirm: function(item) {
+                return "@this.LocalResources("DialogDeleteConfirm") \"" + item.PatientOwner + "\"?";
+            },
+            controller: {
+                loadData: function(filter) {
+                    var d = $.Deferred();
+                    $.post("/Receptions/List", filter).done(function(response) {
+                        d.resolve(response);
+                    });
+
+                    return d.promise();
+                },
+                insertItem: function (item) {
+                    var d = $.Deferred();
+                    var xhr$ = $.ajax({
+                        type: "POST",
+                        url: "/Receptions/Save",
+                        data: item
+                    });
+                    xhr$.success(function (response) {
+                        if (response.success) {
+                            d.resolve(item);
+                        } else {
+                            $.toaster({ priority: 'danger', title: '@this.LocalResources("Error")', message: response.message, timeout: 4000 });
+                            d.reject();
+                        }
+                    });
+                    xhr$.fail(function (error) {
+                        $.toaster({ priority: 'danger', title: '@this.LocalResources("Error")', message: error.statusText, timeout: 4000 });
+                        d.reject();
+                    });
+                    return d;
+                },
+                updateItem: function (item) {
+                    var d = $.Deferred();
+                    var xhr$ = $.ajax({
+                        type: "POST",
+                        url: "/Receptions/Edit",
+                        data: item
+                    });
+                    xhr$.success(function (response) {
+                        if (response.success) {
+                            d.resolve(item);
+                        } else {
+                            $.toaster({ priority: 'danger', title: '@this.LocalResources("Error")', message: response.message, timeout: 4000 });
+                            d.reject();
+                        }
+                    });
+                    xhr$.fail(function (error) {
+                        $.toaster({ priority: 'danger', title: '@this.LocalResources("Error")', message: error.statusText, timeout: 4000 });
+                        d.reject();
+                    });
+                    return d;
+                },
+                deleteItem: function (item) {
+                    var d = $.Deferred();
+                    var xhr$ = $.ajax({
+                        type: "POST",
+                        url: "/Receptions/Delete",
+                        data: item
+                    });
+                    xhr$.success(function () {
+                        d.resolve(item);
+                    });
+                    xhr$.fail(function (error) {
+                        $.toaster({ priority: 'danger', title: '@this.LocalResources("Error")', message: error.statusText, timeout: 4000 });
+                        d.reject();
+                    });
+                    return d;
+                }
+            },
+            fields: [
+                { name: "Date", title: "@this.LocalResources("ColumnDate")", type: "date", validate: "required" },
+                { name: "Time", title: "@this.LocalResources("ColumnTime")", type: "time", validate: "required" },
+                {
+                    align: "left",
+                    name: "DoctorId",
+                    title: "@this.LocalResources("ColumnDoctor")",
+                    type: "select",
+                    items: @Html.Raw(Json.Encode(Model.DoctorsList)),
+                    valueField: "Id",
+                    textField: "Name",
+                    valueType: "number",
+                    validate: ["required", function(value, item) {
+                        return value > 0;
+                    }]
+                },
+                {
+                    align: "left",
+                    name: "PatientId",
+                    title: "@this.LocalResources("ColumnPatient")",
+                    type: "select",
+                    items: @Html.Raw(Json.Encode(Model.PatientsList)),
+                    valueField: "Id",
+                    textField: "Owner",
+                    valueType: "number",
+                    validate: ["required", function(value, item) {
+                        return value > 0;
+                    }]
+                },
+                {
+                    align: "left",
+                    name: "ServiceId",
+                    title: "@this.LocalResources("ColumnService")",
+                    type: "select",
+                    items: @Html.Raw(Json.Encode(Model.ServicesList)),
+                    valueField: "Id",
+                    textField: "TypeOfServiceAndPr",
+                    valueType: "number",
+                    validate: ["required", function(value, item) {
+                        return value > 0;
+                    }]
+                },
+                {
+                    align: "left",
+                    name: "StatusId",
+                    title: "@this.LocalResources("ColumnStatus")",
+                    type: "select",
+                    items: @Html.Raw(Json.Encode(Model.StatusesList)),
+                    valueField: "Id",
+                    textField: "Name",
+                    valueType: "number"
+                },
+                {
+                    align: "left",
+                    name: "Discount",
+                    title: "@this.LocalResources("ColumnDiscount")",
+                    type: "number"
+                },
+                { type: "control" }
+            ]
+        });
+    })
+
+</script>

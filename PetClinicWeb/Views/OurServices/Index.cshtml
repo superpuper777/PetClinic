@@ -1,0 +1,590 @@
+﻿@using PetClinicWeb.System.Extensions
+
+@{
+    ViewBag.Title = this.LocalResources("Tittle");
+}
+
+<h2 class="rtecenter"><strong>ПРЕЙСКУРАНТ НА ВЕТЕРИНАРНЫЕ УСЛУГИ</strong></h2>
+<p><strong>В цену нижеперечисленных услуг не включены стоимость ветеринарных и медицинских препаратов, а также расходных материалов. Цены на услуги и работы, которые не указаны в прайсе, оговариваются отдельно.</strong></p>
+<h2 class="rtecenter"><strong>Ждём Вас в нашей клинике!</strong></h2>
+
+<table align="center" border="2" cellpadding="5" cellspacing="5" height="4320" id="price" style="text-align:left;width: 749px; background: none 0% 0% repeat scroll rgb(242, 242, 242);" width="836">
+    <tbody>
+        <tr>
+            <td style="width: 27px; background:#a0d2b3;">&nbsp;</td>
+            <td class="rtecenter" style="width: 374px; background: none repeat scroll 0% 0% rgb(160, 210, 179);">Наименование ветеринарных услуг</td>
+            <td class="rtecenter" style="width: 149px; background: none 0% 0% repeat scroll rgb(160, 210, 179);">Единица измерения</td>
+            <td style="width: 96px; background: none 0% 0% repeat scroll rgb(160, 210, 179);">Стоимость</td>
+        </tr>
+        <tr>
+            <td class="rtecenter" colspan="4" style="width: 723px; background-color: rgb(160, 210, 179);">1. Прием и консультации</td>
+        </tr>
+        <tr>
+            <td class="rtecenter" style="width: 20px;">1</td>
+            <td style="width: 374px;">Первичный амбулаторный прием</td>
+            <td style="width: 149px;">1 прием</td>
+            <td style="width: 96px;">17.00</td>
+        </tr>
+        <tr>
+            <td class="rtecenter" style="width: 27px;">2</td>
+            <td style="width: 374px;">Повторный амбулаторный прием, консультация по результатам анализов</td>
+            <td style="width: 149px;">1 прием</td>
+            <td style="width: 96px;">10.00</td>
+        </tr>
+        <tr>
+            <td class="rtecenter" style="width: 27px;">3</td>
+            <td style="width: 374px;">Первичный приём дерматолога, офтальмолога, ратолога, орнитолога, герпетолога</td>
+            <td style="width: 149px;">1 консультация</td>
+            <td style="width: 96px;">21.00</td>
+        </tr>
+        <tr>
+            <td class="rtecenter" style="width: 27px;">4</td>
+            <td style="width: 374px;">Повторный приём дерматолога, офтальмолога, ратолога, орнитолога, герпетолога, консультация по результатам анализов</td>
+            <td style="width: 149px;">1 консультация</td>
+            <td style="width: 96px;">140. 00</td>
+        </tr>
+        <tr>
+            <td class="rtecenter" colspan="4" style="width: 723px; background: rgb(160, 210, 179);">2. Инструментальные исследования</td>
+        </tr>
+        <tr>
+            <td class="rtecenter" style="width: 27px;">1</td>
+            <td style="width: 374px;">Люминесцентная диагностика</td>
+            <td style="width: 149px;">1 исследование</td>
+            <td style="width: 96px;">5.00</td>
+        </tr>
+        <tr>
+            <td class="rtecenter" style="width: 27px;">2</td>
+            <td style="width: 374px;">Отоскопия</td>
+            <td style="width: 149px;">1 исследование</td>
+            <td style="width: 96px;">5.00</td>
+        </tr>
+        <tr>
+            <td class="rtecenter" style="width: 27px;">3</td>
+            <td style="width: 374px;">Офтальмоскопия</td>
+            <td style="width: 149px;">1 исследование</td>
+            <td style="width: 96px;">5.00</td>
+        </tr>
+        <tr>
+            <td class="rtecenter" style="width: 27px;">4</td>
+            <td style="width: 374px;">Ультразвуковое исследование одной системы</td>
+            <td style="width: 149px;">1 исследование</td>
+            <td style="width: 96px;">13.00</td>
+        </tr>
+        <tr>
+            <td class="rtecenter" style="width: 27px;">5</td>
+            <td style="width: 374px;">Ультразвуковое исследование органов брюшной полости</td>
+            <td style="width: 149px;">1 исследование</td>
+            <td style="width: 96px;">18.00</td>
+        </tr>
+        <tr>
+            <td class="rtecenter" style="width: 27px;">6</td>
+            <td style="width: 374px;">Экспресс-анализ на определение уровня сахара в крови (глюкометром)</td>
+            <td style="width: 149px;">1 анализ</td>
+            <td style="width: 96px;">6.00</td>
+        </tr>
+        <tr>
+            <td class="rtecenter" style="width: 27px;">7</td>
+            <td style="width: 374px;">Измерения внутриглазного давления (тонометрия)</td>
+            <td style="width: 149px;">1 глаз</td>
+            <td style="width: 96px;">8.00</td>
+        </tr>
+        <tr>
+            <td class="rtecenter" colspan="4" style="width: 723px; background: rgb(160, 210, 179);">3. Терапевтические манипуляции</td>
+        </tr>
+        <tr>
+            <td class="rtecenter" style="width: 27px;">1</td>
+            <td colspan="3" style="width: 678px;">Введение лекарственных средств:</td>
+        </tr>
+        <tr>
+            <td style="width: 27px;">&nbsp;</td>
+            <td style="width: 374px;">&nbsp;- подкожное, внутримышечное, струйно в катетер</td>
+            <td style="width: 149px;">1 введение</td>
+            <td style="width: 96px;">1.50</td>
+        </tr>
+        <tr>
+            <td style="width: 27px;">&nbsp;</td>
+            <td style="width: 374px;">&nbsp;- внутривенное струйно</td>
+            <td style="width: 149px;">1 введение</td>
+            <td style="width: 96px;">7.50</td>
+        </tr>
+        <tr>
+            <td style="width: 27px;">&nbsp;</td>
+            <td style="width: 374px;">&nbsp;- внутривенное капельно</td>
+            <td style="width: 149px;">1 введение</td>
+            <td style="width: 96px;">11.00</td>
+        </tr>
+        <tr>
+            <td style="width: 27px;">&nbsp;</td>
+            <td style="width: 374px;">&nbsp;- внутрисуставное</td>
+            <td style="width: 149px;">1 введение</td>
+            <td style="width: 96px;">11.00</td>
+        </tr>
+        <tr>
+            <td style="width: 27px;">&nbsp;</td>
+            <td style="width: 374px;">- подкожное капельно</td>
+            <td style="width: 149px;">1 введение</td>
+            <td style="width: 96px;">11.00</td>
+        </tr>
+        <tr>
+            <td class="rtecenter" style="width: 27px;">2</td>
+            <td style="width: 374px;">Постановка периферического катетера</td>
+            <td style="width: 149px;">1 катетер</td>
+            <td style="width: 96px;">7.00</td>
+        </tr>
+        <tr>
+            <td class="rtecenter" style="width: 27px;">3</td>
+            <td style="width: 374px;">Пероральное применение препарата</td>
+            <td style="width: 149px;">1 животное</td>
+            <td style="width: 96px;">6.50</td>
+        </tr>
+        <tr>
+            <td class="rtecenter" style="width: 27px;">4</td>
+            <td style="width: 374px;">Ректальное применение препарата</td>
+            <td style="width: 149px;">1 животное</td>
+            <td style="width: 96px;">3.50</td>
+        </tr>
+        <tr>
+            <td class="rtecenter" style="width: 27px;">5</td>
+            <td style="width: 374px;">Постановка клизмы</td>
+            <td style="width: 149px;">1 животное</td>
+            <td style="width: 96px;">39.00</td>
+        </tr>
+        <tr>
+            <td class="rtecenter" style="width: 27px;">6</td>
+            <td style="width: 374px;">Проведение курса химиотерапии, без учёта препаратов</td>
+            <td style="width: 149px;">1 животное</td>
+            <td style="width: 96px;">30.00</td>
+        </tr>
+        <tr>
+            <td class="rtecenter" style="width: 27px;">7</td>
+            <td style="width: 374px;">Взятие проб крови из венозного русла</td>
+            <td style="width: 149px;">1 проба</td>
+            <td style="width: 96px;">6.50</td>
+        </tr>
+        <tr>
+            <td class="rtecenter" style="width: 27px;">8</td>
+            <td style="width: 374px;">Взятие соскоба кожи и его исследование</td>
+            <td style="width: 149px;">1 исследование</td>
+            <td style="width: 96px;">14.00</td>
+        </tr>
+        <tr>
+            <td class="rtecenter" style="width: 27px;">9</td>
+            <td style="width: 374px;">Взятие мазка с кожи и слизистых и его исследование</td>
+            <td style="width: 149px;">1 исследование</td>
+            <td style="width: 96px;">14.00</td>
+        </tr>
+        <tr>
+            <td class="rtecenter" style="width: 27px;">10</td>
+            <td style="width: 374px;">Извлечение клеща</td>
+            <td style="width: 149px;">1 клещ</td>
+            <td style="width: 96px;">3.00</td>
+        </tr>
+        <tr>
+            <td class="rtecenter" style="width: 27px;">11</td>
+            <td style="width: 374px;">Взятие биопсии (со слизистой оболочки, новообразования, костной структуры)</td>
+            <td style="width: 149px;">1 проба</td>
+            <td style="width: 96px;">15.00</td>
+        </tr>
+        <tr>
+            <td class="rtecenter" style="width: 27px;">12</td>
+            <td style="width: 374px;">Зондирование желудка</td>
+            <td style="width: 149px;">1 животное</td>
+            <td style="width: 96px;">35.00</td>
+        </tr>
+        <tr>
+            <td class="rtecenter" style="width: 27px;">13</td>
+            <td colspan="3" style="width: 678px;">Катетеризация мочевого пузыря:</td>
+        </tr>
+    <tr>
+        <td style="width: 27px;">&nbsp;</td>
+        <td style="width: 374px;">&nbsp;- самец (с подшивкой)</td>
+        <td style="width: 149px;">1 животное</td>
+        <td style="width: 96px;">26.00</td>
+    </tr>
+        <tr>
+            <td class="rtecenter" style="width: 27px;">12</td>
+            <td style="width: 374px;">Зондирование желудка</td>
+            <td style="width: 149px;">1 животное</td>
+            <td style="width: 96px;">35.00</td>
+        </tr>
+        <tr>
+            <td class="rtecenter" style="width: 27px;">13</td>
+            <td colspan="3" style="width: 678px;">Катетеризация мочевого пузыря:</td>
+        </tr>
+        <tr>
+            <td style="width: 27px;">&nbsp;</td>
+            <td style="width: 374px;">&nbsp;- самец (с подшивкой)</td>
+            <td style="width: 149px;">1 животное</td>
+            <td style="width: 96px;">26.00</td>
+        </tr>
+        <tr>
+            <td style="width: 27px;">&nbsp;</td>
+            <td style="width: 374px;">- самец (без подшивки)</td>
+            <td style="width: 149px;">1 животное</td>
+            <td style="width: 96px;">22.00</td>
+        </tr>
+        <tr>
+            <td style="width: 27px;">&nbsp;</td>
+            <td style="width: 374px;">&nbsp;- самка</td>
+            <td style="width: 149px;">1 животное</td>
+            <td style="width: 96px;">32.00</td>
+        </tr>
+        <tr>
+            <td class="rtecenter" style="width: 27px;">14</td>
+            <td style="width: 374px;">Обработка против эктопаразитов и эндопаразитов</td>
+            <td style="width: 149px;">1 животное</td>
+            <td style="width: 96px;">5.00</td>
+        </tr>
+        <tr>
+            <td class="rtecenter" style="width: 27px;">15</td>
+            <td style="width: 374px;">Санация ушных раковин</td>
+            <td style="width: 149px;">1 ухо</td>
+            <td style="width: 96px;">4.00</td>
+        </tr>
+        <tr>
+            <td class="rtecenter" style="width: 27px;">16</td>
+            <td style="width: 374px;">Санация анальных желез</td>
+            <td style="width: 149px;">1 животное</td>
+            <td style="width: 96px;">9.00</td>
+        </tr>
+        <tr>
+            <td class="rtecenter" style="width: 27px;">17</td>
+            <td style="width: 374px;">Обработка швов</td>
+            <td style="width: 149px;">1 животное</td>
+            <td style="width: 96px;">6.50</td>
+        </tr>
+        <tr>
+            <td class="rtecenter" style="width: 27px;">18</td>
+            <td style="width: 374px;">Подрезание клюва у птиц</td>
+            <td style="width: 149px;">1 животное</td>
+            <td style="width: 96px;">6.50</td>
+        </tr>
+        <tr>
+            <td class="rtecenter" style="width: 27px;">19</td>
+            <td colspan="3" style="width: 678px;">Пункции:</td>
+        </tr>
+        <tr>
+            <td style="width: 27px;">&nbsp;</td>
+            <td style="width: 374px;">&nbsp;- абсцессов, гематом</td>
+            <td style="width: 149px;">1 пункция</td>
+            <td style="width: 96px;">7.00</td>
+        </tr>
+        <tr>
+            <td style="width: 27px;">&nbsp;</td>
+            <td style="width: 374px;">&nbsp;- брюшной полости</td>
+            <td style="width: 149px;">1 пункция</td>
+            <td style="width: 96px;">11.00</td>
+        </tr>
+        <tr>
+            <td style="width: 27px;">&nbsp;</td>
+            <td style="width: 374px;">&nbsp;- грудной полости</td>
+            <td style="width: 149px;">1 пункция</td>
+            <td style="width: 96px;">11.00</td>
+        </tr>
+        <tr>
+            <td style="width: 27px;">&nbsp;</td>
+            <td style="width: 374px;">&nbsp;- сустава</td>
+            <td style="width: 149px;">1 пункция</td>
+            <td style="width: 96px;">6.00</td>
+        </tr>
+        <tr>
+            <td style="width: 27px;">20</td>
+            <td colspan="3" style="width: 678px;">Родовспоможение:</td>
+        </tr>
+        <tr>
+            <td style="width: 27px;">&nbsp;</td>
+            <td style="width: 374px;">&nbsp;- легкое</td>
+            <td style="width: 149px;">1 животное</td>
+            <td style="width: 96px;">55.00</td>
+        </tr>
+        <tr>
+            <td style="width: 27px;">&nbsp;</td>
+            <td style="width: 374px;">&nbsp;- тяжелое</td>
+            <td style="width: 149px;">1 животное</td>
+            <td style="width: 96px;">80.00</td>
+        </tr>
+        <tr>
+            <td style="width: 27px;">21</td>
+            <td style="width: 374px;">Обрезка когтей</td>
+            <td style="width: 149px;">1 коготь</td>
+            <td style="width: 96px;">0.60 (8.00)</td>
+        </tr>
+        <tr>
+            <td style="width: 27px;">22</td>
+            <td style="width: 374px;">Цистоцентез</td>
+            <td style="width: 149px;">1 животное</td>
+            <td style="width: 96px;">6.50</td>
+        </tr>
+        <tr>
+            <td style="width: 27px;">23</td>
+            <td style="width: 374px;">Копростаз безоперационное удаление</td>
+            <td style="width: 149px;">1 животное</td>
+            <td style="width: 96px;">35.00</td>
+        </tr>
+        <tr>
+            <td style="width: 27px;">24</td>
+            <td style="width: 374px;">Промывание мочевого пузыря</td>
+            <td style="width: 149px;">1 животное</td>
+            <td style="width: 96px;">10.00</td>
+        </tr>
+        <tr>
+            <td style="width: 27px;">25</td>
+            <td style="width: 374px;">Спленэктомия</td>
+            <td style="width: 149px;">1 животное</td>
+            <td style="width: 96px;">75.00</td>
+        </tr>
+        <tr>
+            <td style="width: 27px;">26</td>
+            <td style="width: 374px;">Нефрэктомия</td>
+            <td style="width: 149px;">1 животное</td>
+            <td style="width: 96px;">85.00</td>
+        </tr>
+        <tr>
+            <td style="width: 27px;">27</td>
+            <td style="width: 374px;">Цистотомия</td>
+            <td style="width: 149px;">1 животное</td>
+            <td style="width: 96px;">85.00</td>
+        </tr>
+        <tr>
+            <td style="width: 27px;">28</td>
+            <td style="width: 374px;">Удаление жидкости при экссудативном плеврите, асцените</td>
+            <td style="width: 149px;">1 животное</td>
+            <td style="width: 96px;">35.00</td>
+        </tr>
+        <tr>
+            <td style="width: 27px;">29</td>
+            <td style="width: 374px;">Промывание носовых ходов</td>
+            <td style="width: 149px;">1 животное&nbsp;</td>
+            <td style="width: 96px;">6.00</td>
+        </tr>
+        <tr>
+            <td style="width: 27px;">30</td>
+            <td style="width: 374px;">Гемотрансфузия (переливание крови)</td>
+            <td style="width: 149px;">1 животное</td>
+            <td style="width: 96px;">50.00</td>
+        </tr>
+        <tr>
+            <td style="width: 27px;">31</td>
+            <td colspan="3" rowspan="1" style="width: 374px;">Инфузия:</td>
+        </tr>
+        <tr>
+            <td style="width: 27px;">&nbsp;</td>
+            <td style="width: 374px;">- Инфузия I категории (до 2 часов)</td>
+            <td style="width: 149px;">1 животное</td>
+            <td style="width: 96px;">11.0</td>
+        </tr>
+        <tr>
+            <td style="width: 27px;">&nbsp;</td>
+            <td style="width: 374px;">- Инфузия II категории (от 2 до 4 часов)</td>
+            <td style="width: 149px;">1 животное</td>
+            <td style="width: 96px;">13.00</td>
+        </tr>
+        <tr>
+            <td style="width: 27px;">&nbsp;</td>
+            <td style="width: 374px;">-&nbsp;Инфузия III категории (от 4 до 6 часов)</td>
+            <td style="width: 149px;">1 животное</td>
+            <td style="width: 96px;">21.00</td>
+        </tr>
+        <tr>
+            <td style="width: 27px;">&nbsp;</td>
+            <td style="width: 374px;">-&nbsp;Инфузия IV категории (более 6 часов)</td>
+            <td style="width: 149px;">1 животное</td>
+            <td style="width: 96px;">40.00</td>
+        </tr>
+        <tr>
+            <td style="width: 27px;">32</td>
+            <td style="width: 374px;">Стрижка кота/кролика (без стоимости анестезии)</td>
+            <td style="width: 149px;">1 животное</td>
+            <td style="width: 96px;">25.00</td>
+        </tr>
+        <tr>
+            <td style="width: 27px;">33</td>
+            <td style="width: 374px;">Кислород</td>
+            <td style="width: 149px;">1 час</td>
+            <td style="width: 96px;">5.00</td>
+        </tr>
+        <tr>
+            <td style="width: 27px;">34</td>
+            <td style="width: 374px;">Ректальное исследование</td>
+            <td style="width: 149px;">1 исследование</td>
+            <td style="width: 96px;">10.00</td>
+        </tr>
+        <tr>
+            <td style="width: 27px;">35</td>
+            <td style="width: 374px;">Промывание препуции</td>
+            <td style="width: 149px;">1 промывание</td>
+            <td style="width: 96px;">10.00</td>
+        </tr>
+        <tr>
+            <td style="width: 27px;">36</td>
+            <td style="width: 374px;">Промывание параанальных желез</td>
+            <td style="width: 149px;">1 промывание</td>
+            <td style="width: 96px;">10.00</td>
+        </tr>
+        <tr>
+            <td style="width: 27px;">37</td>
+            <td style="width: 374px;">Бужирование</td>
+            <td style="width: 149px;">1 животное</td>
+            <td style="width: 96px;">6.50</td>
+        </tr>
+        <tr>
+            <td class="rtecenter" colspan="4" style="width: 723px; background: rgb(160, 210, 179);">4. Вакцинации и чипировка</td>
+        </tr>
+        <tr>
+            <td class="rtecenter" style="width: 27px;">1</td>
+            <td style="width: 374px;"><a href="/vakcinaciya-i-chipirovanie"><font color="#333333">Вакцинация (без стоимости вакцины)</font></a></td>
+            <td style="width: 149px;">1 животное</td>
+            <td style="width: 96px;">9.00</td>
+        </tr>
+        <tr>
+            <td class="rtecenter" style="width: 27px;">2</td>
+            <td style="width: 374px;"><a href="/chipirovanie"><font color="#333333">Чипирование с внесением в международную базу (без стоимости чипа)</font></a></td>
+            <td style="width: 149px;">1 животное</td>
+            <td style="width: 96px;">10.00</td>
+        </tr>
+        <tr>
+            <td class="rtecenter" style="width: 27px;">3</td>
+            <td style="width: 374px;"><a href="/veterinarnyy-pasport-vetpasport-v-belarusi"><font color="#333333">Первичное оформление ветеринарного паспорта (без стоимости паспорта)</font></a></td>
+            <td style="width: 149px;">1 животное</td>
+            <td style="width: 96px;">1.00</td>
+        </tr>
+        <tr>
+            <td class="rtecenter" colspan="4" style="width: 723px; background: rgb(160, 210, 179);">5. Хирургические манипуляции</td>
+        </tr>
+        <tr>
+            <td class="rtecenter" style="width: 27px;">1</td>
+            <td colspan="3" style="width: 678px;">Лечение ран:</td>
+        </tr>
+        <tr>
+            <td style="width: 27px;">&nbsp;</td>
+            <td style="width: 374px;">&nbsp;- малые, площадью до 6 кв.см, свежие</td>
+            <td style="width: 149px;">1 рана</td>
+            <td style="width: 96px;">19.00</td>
+        </tr>
+        <tr>
+            <td style="width: 27px;">&nbsp;</td>
+            <td style="width: 374px;">&nbsp;- малые, площадью до 6 кв.см, инфицированные</td>
+            <td style="width: 149px;">1 рана</td>
+            <td style="width: 96px;">28.00</td>
+        </tr>
+        <tr>
+            <td style="width: 27px;">&nbsp;</td>
+            <td style="width: 374px;">- обширные, площадью свыше 6 кв.см., свежие</td>
+            <td style="width: 149px;">1 рана</td>
+            <td style="width: 96px;">38.00</td>
+        </tr>
+        <tr>
+            <td style="width: 27px;">&nbsp;</td>
+            <td style="width: 374px;">&nbsp;-&nbsp;обширные, площадью свыше 6 кв.см, инфицированные</td>
+            <td style="width: 149px;">1 рана&nbsp;</td>
+            <td style="width: 96px;">55.00</td>
+        </tr>
+        <tr>
+            <td class="rtecenter" style="width: 27px;">2</td>
+            <td colspan="3" style="width: 374px;">Вскрытие абсцесса:</td>
+        </tr>
+        <tr>
+            <td style="width: 27px;">&nbsp;</td>
+            <td style="width: 374px;">- крупное животное</td>
+            <td style="width: 149px;">1 абсцесс</td>
+            <td style="width: 96px;">18.00</td>
+        </tr>
+        <tr>
+            <td style="width: 27px;">&nbsp;</td>
+            <td style="width: 374px;">- мелкое животное</td>
+            <td style="width: 149px;">1 абсцесс</td>
+            <td style="width: 96px;">11.00</td>
+        </tr>
+        <tr>
+            <td class="rtecenter" style="width: 27px;">3</td>
+            <td style="width: 374px;">Постановка дренажа</td>
+            <td style="width: 149px;">1 дренаж</td>
+            <td style="width: 96px;">9.00</td>
+        </tr>
+        <tr>
+            <td class="rtecenter" style="width: 27px;">4</td>
+            <td style="width: 374px;">Вправление вывихов</td>
+            <td style="width: 149px;">1 вывих</td>
+            <td style="width: 96px;">35.00</td>
+        </tr>
+        <tr>
+            <td class="rtecenter" style="width: 27px;">5</td>
+            <td style="width: 374px;">Вправление влагалища</td>
+            <td style="width: 149px;">1 вправление</td>
+            <td style="width: 96px;">29.00</td>
+        </tr>
+        <tr>
+            <td class="rtecenter" style="width: 27px;">6</td>
+            <td style="width: 374px;">Наложение шин, гипсовых повязок, лонгет</td>
+            <td style="width: 149px;">1 конечность</td>
+            <td style="width: 96px;">15.00</td>
+        </tr>
+        <tr>
+            <td class="rtecenter" style="width: 27px;">7</td>
+            <td style="width: 374px;">Наложение повязки, перевязка</td>
+            <td style="width: 149px;">1 конечность</td>
+            <td style="width: 96px;">8.50</td>
+        </tr>
+        <tr>
+            <td class="rtecenter" style="width: 27px;">8</td>
+            <td style="width: 374px;">Снятие швов</td>
+            <td style="width: 149px;">1 животное&nbsp;</td>
+            <td style="width: 96px;">5.50</td>
+        </tr>
+        <tr>
+            <td class="rtecenter" style="width: 27px;">9</td>
+            <td style="width: 374px;">Снятие шин и гипсовых повязок</td>
+            <td style="width: 149px;">1 конечность</td>
+            <td style="width: 96px;">6.50</td>
+        </tr>
+        <tr>
+            <td class="rtecenter" style="width: 27px;">10</td>
+            <td style="width: 374px;">Удаление когтя</td>
+            <td style="width: 149px;">1 коготь</td>
+            <td style="width: 96px;">7.50</td>
+        </tr>
+        <tr>
+            <td class="rtecenter" style="width: 27px;">11</td>
+            <td style="width: 374px;">Постановка свечи ректально (вагинально)</td>
+            <td style="width: 149px;">1 животное</td>
+            <td style="width: 96px;">2.00</td>
+        </tr>
+        <tr>
+            <td class="rtecenter" style="width: 27px;">12</td>
+            <td style="width: 374px;">Эвакуация содержимого отогематомы</td>
+            <td style="width: 149px;">1 животное</td>
+            <td style="width: 96px;">20.00</td>
+        </tr>
+        <tr>
+            <td class="rtecenter" colspan="4" style="width: 723px; background: rgb(160, 210, 179);">6. Хирургические операции</td>
+        </tr>
+        <tr>
+            <td class="rtecenter" style="width: 27px;">1</td>
+            <td style="width: 374px;">Диагностическая лапаротомия</td>
+            <td style="width: 149px;">1 животное</td>
+            <td style="width: 96px;">59.00</td>
+        </tr>
+        <tr>
+            <td class="rtecenter" style="width: 27px;">2</td>
+            <td colspan="3" style="width: 678px;">Кастрация самцов:</td>
+        </tr>
+        <tr>
+            <td style="width: 27px;">&nbsp;</td>
+            <td style="width: 374px;">- кобель, хорек (с учетом медикаментов)</td>
+            <td style="width: 149px;">1 животное</td>
+            <td style="width: 96px;">80.00-140.00</td>
+        </tr>
+        <tr>
+            <td style="width: 27px;">&nbsp;</td>
+            <td style="width: 374px;">- кот, крыса, кролик (с учетом медикаментов)</td>
+            <td style="width: 149px;">1 животное</td>
+            <td style="width: 96px;">63.00</td>
+        </tr>
+        <tr>
+            <td class="rtecenter" style="width: 27px;">3</td>
+            <td style="width: 374px;">Хирургическое вмешательство при крипторхизме</td>
+            <td style="width: 149px;">1 животное</td>
+            <td style="width: 96px;">50.00</td>
+        </tr>
+    </tbody>
+</table>
